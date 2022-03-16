@@ -3,7 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 
 
-namespace RandomSorting.Utils.Extensions;
+namespace CreativeTrager.RandomSorting.Demo.Utils.Extensions;
 internal static class EnumerableExtensions 
 {
 	internal static string ValuesToString<TValue>

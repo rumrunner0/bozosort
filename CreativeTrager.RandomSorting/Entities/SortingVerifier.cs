@@ -7,7 +7,7 @@ using System.Linq;
 // ReSharper disable MemberCanBeMadeStatic.Global
 
 
-namespace RandomSorting.Utils.Entities;
+namespace CreativeTrager.RandomSorting.Entities;
 internal static class SortingVerifier 
 {
 	internal enum SortingOrder 
@@ -25,7 +25,7 @@ internal static class SortingVerifier
 			SortingOrder.Ascending  => bool (curr, next) => ((IComparable<TElement>)curr!).CompareTo(next) > 0,
 			SortingOrder.Descending => bool (curr, next) => ((IComparable<TElement>)curr!).CompareTo(next) < 0,
 			_ => throw new ArgumentOutOfRangeException(paramName: nameof(order), actualValue: order,
-				message: $"Invalid sorting order value specified."
+				message: $"Invalid sorting order value has been specified."
 			)
 		});
 

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.RandomSorting", "CreativeTrager.RandomSorting\CreativeTrager.RandomSorting.csproj", "{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreativeTrager.RandomSorting.Demo", "CreativeTrager.RandomSorting.Demo\CreativeTrager.RandomSorting.Demo.csproj", "{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

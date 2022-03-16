@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using RandomSorting.Utils.Entities;
+using CreativeTrager.RandomSorting.Entities;
 
 
 // ReSharper disable UnassignedGetOnlyAutoProperty
@@ -11,25 +11,25 @@ using RandomSorting.Utils.Entities;
 // ReSharper disable MemberCanBeMadeStatic.Global
 
 
-namespace RandomSorting;
-internal sealed class RandomSorter<TElement> 
+namespace CreativeTrager.RandomSorting;
+public sealed class RandomSorter<TElement> 
 {
-	internal class RandomSorterEventArgs : EventArgs 
+	public class RandomSorterEventArgs : EventArgs 
 	{
-		internal int IterationNumber { get; init; }
-		internal TElement[] Array { get; init; } = null!;
+		public int IterationNumber { get; init; }
+		public TElement[] Array { get; init; } = null!;
 	}
-	internal sealed class RandomSorterIterationEventArgs : RandomSorterEventArgs 
+	public sealed class RandomSorterIterationEventArgs : RandomSorterEventArgs 
 	{
-		internal TElement LeftElement  { get; init; } = default!;
-		internal TElement RightElement { get; init; } = default!;
+		public TElement LeftElement  { get; init; } = default!;
+		public TElement RightElement { get; init; } = default!;
 	}
 
-	internal event EventHandler<RandomSorterEventArgs>? SortingBegin;
-	internal event EventHandler<RandomSorterEventArgs>? SortingEnd;
-	internal event EventHandler<RandomSorterIterationEventArgs>? SortingIterationEnd;
+	public event EventHandler<RandomSorterEventArgs>? SortingBegin;
+	public event EventHandler<RandomSorterEventArgs>? SortingEnd;
+	public event EventHandler<RandomSorterIterationEventArgs>? SortingIterationEnd;
 
-	internal void Run(in IEnumerable<TElement> enumerable) 
+	public void Run(in IEnumerable<TElement> enumerable) 
 	{
 		var array = enumerable.ToArray();
 		var iterationCount = 0;
@@ -44,6 +44,7 @@ internal sealed class RandomSorter<TElement>
 
 			var bIndex = default(int);
 			var aIndex = RandomNumberGenerator.GetInt32(array.Length);
+
 			do  bIndex = RandomNumberGenerator.GetInt32(array.Length);
 			while(bIndex == aIndex);
 

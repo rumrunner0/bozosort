@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using RandomSorting;
-using RandomSorting.Utils.Extensions;
+using CreativeTrager.RandomSorting;
+using CreativeTrager.RandomSorting.Demo.Utils.Extensions;
 
 
 var sorter = new RandomSorter<int>();
@@ -37,7 +37,7 @@ while(true)
 		Console.Clear();
 	}
 
-	sorter.Run(enumerable: Enumerable.Range(0, intInput).Shuffle());
+	sorter.Run(Enumerable.Range(0, intInput).Shuffle());
 	Console.ReadLine();
 	Console.Clear();
 }
