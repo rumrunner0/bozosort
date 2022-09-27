@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-
-// ReSharper disable LoopCanBeConvertedToQuery
-// ReSharper disable MemberCanBeMadeStatic.Global
-
-
-namespace CreativeTrager.RandomSorting.Entities;
+﻿namespace CreativeTrager.RandomSorting.Library;
 internal static class SortingVerifier 
 {
 	internal enum SortingOrder 
@@ -16,10 +7,7 @@ internal static class SortingVerifier
 		Descending
 	}
 
-	internal static bool IsSorted<TElement>(
-		in IEnumerable<TElement> enumerable,
-		SortingOrder order
-	) 
+	internal static bool IsSorted<TElement>(in IEnumerable<TElement> enumerable, SortingOrder order) 
 	{
 		var compare = (Func<TElement?, TElement?, bool>) (order switch {
 			SortingOrder.Ascending  => bool (curr, next) => ((IComparable<TElement>)curr!).CompareTo(next) > 0,
