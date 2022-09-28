@@ -20,7 +20,8 @@ public sealed class RandomSorter<TSortable>
 		var enumeratedCollection = enumerable.ToArray();
 
 		SortingBegin?.Invoke(sender: this, new () {
-			IterationNumber = iterationCount, Array = enumeratedCollection
+			IterationNumber = iterationCount,
+			Array = enumeratedCollection
 		});
 
 		while(true) 
