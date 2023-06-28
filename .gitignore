@@ -1,8 +1,9 @@
-**/.idea/**
 **/.vs/**
 **/.vscode/**
+**/.idea/**
 
 **/[Bb]in/**
 **/[Oo]bj/**
 
+*.log
 *.user
