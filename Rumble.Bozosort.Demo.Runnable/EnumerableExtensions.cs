@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 
 
-namespace CreativeTrager.RandomSorting.Demo.Runnable;
+namespace Rumble.Bozosort.Demo.Runnable;
 internal static class EnumerableExtensions 
 {
 	internal static string ToString<TValue>(this IEnumerable<TValue> list, string separator) 

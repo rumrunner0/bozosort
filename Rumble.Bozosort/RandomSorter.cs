@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 
 
-namespace CreativeTrager.RandomSorting.Library;
+namespace Rumble.Bozosort;
 public sealed class RandomSorter<TSortable> 
 {
 	#region Data

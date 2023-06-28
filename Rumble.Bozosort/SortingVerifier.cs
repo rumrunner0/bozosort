@@ -1,4 +1,4 @@
-﻿namespace CreativeTrager.RandomSorting.Library;
+﻿namespace Rumble.Bozosort;
 internal static class SortingVerifier 
 {
 	internal enum SortingOrder 

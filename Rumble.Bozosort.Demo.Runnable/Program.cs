@@ -1,5 +1,5 @@
-﻿using CreativeTrager.RandomSorting.Demo.Runnable;
-using CreativeTrager.RandomSorting.Library;
+﻿using Rumble.Bozosort.Demo.Runnable;
+using Rumble.Bozosort;
 
 
 var sorter = RandomSorter<int>.Factory.Create();

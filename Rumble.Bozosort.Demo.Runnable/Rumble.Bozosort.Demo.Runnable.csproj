@@ -24,7 +24,7 @@
 		<DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\CreativeTrager.RandomSorting.Library\CreativeTrager.RandomSorting.Library.csproj" />
+		<ProjectReference Include="..\Rumble.Bozosort\Rumble.Bozosort.csproj" />
 	</ItemGroup>
 
 </Project>
