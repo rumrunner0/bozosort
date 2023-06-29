@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Rumble.Essentials;
 
 namespace Rumble.Bozosort;
 
@@ -40,6 +42,7 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 	{
 		var iterationNumber = 0;
 		var array = sequence.ToArray();
+		var stopwatch = new Stopwatch();
 
 		Started?.Invoke(sender: this, new ()
 		{
@@ -48,8 +51,11 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 
 		while(true)
 		{
+			stopwatch.Start();
+
 			if(array.IsOrdered())
 			{
+				stopwatch.Stop();
 				break;
 			}
 
@@ -57,6 +63,8 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 
 			var (aIndex, bIndex, _) = array.RandomUniqueIndexes(count: 2).Order().ToArray();
 			(array[aIndex], array[bIndex]) = (array[bIndex], array[aIndex]);
+
+			stopwatch.Stop();
 
 			IterationCompleted?.Invoke(sender: this, new ()
 			{
@@ -70,7 +78,8 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 		Completed?.Invoke(sender: this, new ()
 		{
 			Sequence = array,
-			IterationNumber = iterationNumber
+			IterationNumber = iterationNumber,
+			ElapsedTime = stopwatch.Elapsed
 		});
 	}
 

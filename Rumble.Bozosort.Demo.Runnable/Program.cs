@@ -38,8 +38,9 @@ sorter.Completed += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"{AlgorithmName} has completed sorting the sequence. The sequence has been sorted in {IterationNumber} iterations",
-		nameof(Bozosorter<int>), sortingArgs.IterationNumber
+		"{AlgorithmName} has completed sorting the sequence. " +
+		"The sequence has been sorted in {TotalSeconds} seconds and {IterationNumber} iterations",
+		nameof(Bozosorter<int>), sortingArgs.ElapsedTime.TotalSeconds, sortingArgs.IterationNumber
 	);
 };
 
