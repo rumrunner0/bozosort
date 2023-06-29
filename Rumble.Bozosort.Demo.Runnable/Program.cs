@@ -19,7 +19,7 @@ sorter.Started += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"{AlgorithmName} has been started to sort array: [{Array}]",
+		"{AlgorithmName} has started sorting the sequence: [{Sequence}]",
 		nameof(Bozosorter<int>), sortingArgs.Sequence.Joined()
 	);
 };
@@ -28,7 +28,7 @@ sorter.IterationCompleted += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"Iteration {IterationNumber}. Changes: {FirstElement} <=> {SecondElement}. Array: [{Array}].",
+		"Iteration {IterationNumber}. Changes: {FirstElement} <=> {SecondElement}. Sequence: [{Sequence}]",
 		sortingArgs.IterationNumber, sortingArgs.FirstElement,
 		sortingArgs.SecondElement, sortingArgs.Sequence.Joined()
 	);
@@ -38,7 +38,7 @@ sorter.Completed += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"{AlgorithmName} has been completed. Sequence has been sorted in {IterationNumber} iterations",
+		"{AlgorithmName} has completed sorting the sequence. The sequence has been sorted in {IterationNumber} iterations",
 		nameof(Bozosorter<int>), sortingArgs.IterationNumber
 	);
 };
