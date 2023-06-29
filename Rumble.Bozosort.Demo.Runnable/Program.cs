@@ -15,16 +15,16 @@ var logger = Log.Logger.ForContext<Program>();
 logger.Information("Application has been started");
 
 var sorter = Bozosorter<int>.Factory.Default();
-sorter.Started += (_, sortingArgs) =>
+sorter.Started += (_, args) =>
 {
 	logger.Information
 	(
 		"{AlgorithmName} has started sorting the sequence: {Sequence}",
-		nameof(Bozosorter<int>), sortingArgs.Sequence
+		nameof(Bozosorter<int>), args.Sequence
 	);
 };
 
-sorter.IterationCompleted += (_, sortingArgs) =>
+sorter.IterationCompleted += (_, args) =>
 {
 	logger.Information
 	(
@@ -32,19 +32,19 @@ sorter.IterationCompleted += (_, sortingArgs) =>
 		"Changes: {FirstElement} <=> {SecondElement}. " +
 		"Sequence: {Sequence}",
 
-		sortingArgs.IterationNumber,
-		sortingArgs.FirstElement, sortingArgs.SecondElement,
-		sortingArgs.Sequence
+		args.IterationNumber,
+		args.FirstElement, args.SecondElement,
+		args.Sequence
 	);
 };
 
-sorter.Completed += (_, sortingArgs) =>
+sorter.Completed += (_, args) =>
 {
 	logger.Information
 	(
 		"{AlgorithmName} has completed sorting the sequence. " +
 		"The sequence has been sorted in {TotalSeconds} seconds and {IterationNumber} iterations",
-		nameof(Bozosorter<int>), sortingArgs.ElapsedTime.TotalSeconds, sortingArgs.IterationNumber
+		nameof(Bozosorter<int>), args.ElapsedTime.TotalSeconds, args.IterationNumber
 	);
 };
 
