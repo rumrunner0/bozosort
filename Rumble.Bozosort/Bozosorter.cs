@@ -18,7 +18,7 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 	///
 	/// <inheritdoc />
 	///
-	public event EventHandler<SorterEventArgs<TSortable>>? Completed;
+	public event EventHandler<SorterCompletedEventArgs<TSortable>>? Completed;
 
 	///
 	/// <inheritdoc />
@@ -43,12 +43,16 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 
 		Started?.Invoke(sender: this, new ()
 		{
-			Sequence = array,
-			IterationNumber = iterationNumber
+			Sequence = array
 		});
 
 		while(true)
 		{
+			if(array.IsOrdered())
+			{
+				break;
+			}
+
 			iterationNumber++;
 
 			var (aIndex, bIndex, _) = array.RandomUniqueIndexes(count: 2).Order().ToArray();
@@ -58,14 +62,9 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 			{
 				IterationNumber = iterationNumber,
 				Sequence = array,
-				FirstElement  = array[aIndex],
-				SecondElement = array[bIndex]
+				FirstElement  = array[bIndex],
+				SecondElement = array[aIndex]
 			});
-
-			if(array.IsOrdered())
-			{
-				break;
-			}
 		}
 
 		Completed?.Invoke(sender: this, new ()

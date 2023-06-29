@@ -41,13 +41,13 @@ public static class EnumerableExtensions
 			);
 		}
 
-		var randomUniqueIndexes = new int[count];
-		for(var i = 0; i < randomUniqueIndexes.Length; i++)
+		var randomUniqueIndexes = new List<int>();
+		for(var i = 0; i < count; i++)
 		{
 			var randomUniqueIndex = default(int);
-			do  randomUniqueIndex = RandomNumberGenerator.GetInt32(enumeratedSource.Length);
+			do randomUniqueIndex = RandomNumberGenerator.GetInt32(enumeratedSource.Length);
 			while(randomUniqueIndexes.Contains(randomUniqueIndex));
-			randomUniqueIndexes[i] = randomUniqueIndex;
+			randomUniqueIndexes.Add(randomUniqueIndex);
 		}
 
 		return randomUniqueIndexes;

@@ -17,7 +17,7 @@ public interface ISorter<TSortable> where TSortable : IComparable<TSortable>
 	/// <summary>
 	/// Event that is raised after the sorting is completed.
 	/// </summary>
-	event EventHandler<SorterEventArgs<TSortable>>? Completed;
+	event EventHandler<SorterCompletedEventArgs<TSortable>>? Completed;
 
 	/// <summary>
 	/// Event that is raised after each iteration of the sorting is completed. <br />

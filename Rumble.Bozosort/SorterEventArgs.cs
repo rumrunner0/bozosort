@@ -13,9 +13,4 @@ public class SorterEventArgs<TSortable> : EventArgs
 	/// Sequence to sort.
 	/// </summary>
 	public required IEnumerable<TSortable> Sequence { get; init; }
-
-	/// <summary>
-	/// Number of the sorting iteration.
-	/// </summary>
-	public required int IterationNumber { get; init; }
 }

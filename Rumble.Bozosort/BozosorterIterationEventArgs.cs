@@ -15,4 +15,9 @@ public sealed class BozosorterIterationEventArgs<TSortable> : SorterEventArgs<TS
 	/// Second randomly picked element of the sequence.
 	/// </summary>
 	public required TSortable SecondElement { get; init; }
+
+	/// <summary>
+	/// Number of the sorting iteration.
+	/// </summary>
+	public required int IterationNumber { get; init; }
 }
