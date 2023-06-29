@@ -1,30 +1,61 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<ImplicitUsings>true</ImplicitUsings>
+		<TargetFramework>net8.0</TargetFramework>
+		<LangVersion>11</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Platforms>AnyCPU</Platforms>
-		<Configurations>Release;Debug</Configurations>
+		<Platform>AnyCPU</Platform>
+		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
 		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>none</DebugType>
-		<DefineConstants />
 		<Optimize>true</Optimize>
+		<DefineConstants />
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<DefineConstants>TRACE</DefineConstants>
-	</PropertyGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Rumble.Bozosort\Rumble.Bozosort.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Rumble.Essentials" Version="0.0.18" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<None Remove="appsettings.json" />
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+
+		<None Remove="appsettings.Development.json" />
+		<Content Include="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+
+		<None Remove="appsettings.Production.json" />
+		<Content Include="appsettings.Production.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+
 	</ItemGroup>
 
 </Project>

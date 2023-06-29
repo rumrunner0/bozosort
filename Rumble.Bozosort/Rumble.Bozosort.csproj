@@ -1,27 +1,58 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<LangVersion>10</LangVersion>
-		<ImplicitUsings>true</ImplicitUsings>
+		<TargetFramework>net8.0</TargetFramework>
+		<LangVersion>11</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<Platforms>AnyCPU</Platforms>
-		<Configurations>Release;Debug</Configurations>
+		<Platform>AnyCPU</Platform>
+		<Configurations>Debug;Release</Configurations>
 		<OutputType>Library</OutputType>
 		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>Rumble.Bozosort</PackageId>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>0.0.1</Version>
+		<AssemblyVersion>0.0.1</AssemblyVersion>
+		<FileVersion>1</FileVersion>
+		<Title>Bozosort</Title>
+		<Authors>Roman Malyi</Authors>
+		<Copyright>Copyright (c) Roman Malyi 2023.</Copyright>
+		<RepositoryUrl>https://github.com/rumrunner0/bozosort</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>portable</DebugType>
+		<Optimize>false</Optimize>
+		<DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<DebugSymbols>false</DebugSymbols>
 		<DebugType>none</DebugType>
-		<DefineConstants />
 		<Optimize>true</Optimize>
+		<DefineConstants />
 	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<DefineConstants>TRACE</DefineConstants>
+	<ItemGroup>
+		<PackageReference Include="Rumble.Essentials" Version="0.0.18" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
+	</ItemGroup>
 
 </Project>
