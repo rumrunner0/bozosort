@@ -2,8 +2,8 @@
 **/.vscode/**
 **/.idea/**
 
-**/[Bb]in/**
-**/[Oo]bj/**
+**/bin/**
+**/obj/**
 
 *.log
 *.user
