@@ -1,26 +1,61 @@
-﻿using Rumble.Bozosort.Demo.Runnable;
+﻿using System;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using Rumble.Bozosort;
+using Rumble.Bozosort.Demo.Runnable;
+using Rumble.Essentials;
+using Serilog;
 
+Console.InputEncoding = Encoding.UTF8;
+Console.OutputEncoding = Encoding.UTF8;
 
-var sorter = RandomSorter<int>.Factory.Create();
-sorter.SortingBegin        += (_, sortingArgs) => Console.WriteLine($"Iteration {sortingArgs.IterationNumber}:\t{sortingArgs.Array.ToString(separator: " ")}");
-sorter.SortingEnd          += (_, sortingArgs) => Console.WriteLine($"Integer sequence has been sorted in {sortingArgs.IterationNumber} iterations.");
-sorter.SortingIterationEnd += (_, sortingArgs) => Console.WriteLine($"Iteration {sortingArgs.IterationNumber}:\t{sortingArgs.Array.ToString(separator: " ")}\t{sortingArgs.LeftElement} <=> {sortingArgs.RightElement}");
+var settings = Essential.OfType<Settings>();
+Log.Logger = Essential.OfType<ILogger>();
 
-while(true) 
+var logger = Log.Logger.ForContext<Program>();
+logger.Information("Application has been started");
+
+var sorter = Bozosorter<int>.Factory.New();
+sorter.Started += (_, sortingArgs) =>
 {
-	var intInput = default(int);
-	while(true) 
-	{
-		var input = Console.ReadLine()!;
-		if(input.ToLower().Equals("q") is true) goto EndOfApplication;
-		if(int.TryParse(input, out intInput) is true) break;
-		Console.Clear();
-	}
+	logger.Information
+	(
+		"{AlgorithmName} has been started",
+		nameof(Bozosorter<int>)
+	);
 
-	sorter.Run(Enumerable.Range(0, intInput).Shuffle());
-	Console.ReadLine();
-	Console.Clear();
-}
+	logger.Information
+	(
+		"Iteration {IterationNumber}: {Array}",
+		sortingArgs.IterationNumber,
+		sortingArgs.Sequence.ToString()
+	);
+};
 
-EndOfApplication:;
+sorter.IterationCompleted += (_, sortingArgs) =>
+{
+	logger.Information
+	(
+		"Iteration {IterationNumber}. Array: [{Array}]. Changes: {FirstElement} <=> {SecondElement}",
+		sortingArgs.IterationNumber, sortingArgs.Sequence.Joined(),
+		sortingArgs.FirstElement, sortingArgs.SecondElement
+	);
+};
+
+sorter.Completed += (_, sortingArgs) =>
+{
+	logger.Information
+	(
+		"{AlgorithmName} has been completed. Sequence has been sorted in {IterationNumber} iterations",
+		nameof(Bozosorter<int>), sortingArgs.IterationNumber
+	);
+};
+
+var sequence = Enumerable.Range(0, Input.Line<int>(Console.In)).ToArray();
+RandomNumberGenerator.Shuffle(sequence.AsSpan());
+sorter.Run(sequence);
+
+logger.Information("Application has been shut down");
+logger.Information("");
+Log.CloseAndFlush();
