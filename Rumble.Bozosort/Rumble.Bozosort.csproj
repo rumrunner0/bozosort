@@ -43,7 +43,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Rumble.Essentials" Version="0.0.19" />
+		<PackageReference Include="Rumble.Essentials" Version="0.0.20" />
 	</ItemGroup>
 
 	<PropertyGroup>
