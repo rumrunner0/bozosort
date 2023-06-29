@@ -31,14 +31,14 @@ internal static class Input
 		{
 			throw new ApplicationException
 			(
-				$"An error occured while reading data using {typeof(TextReader)}. Details: {e.Message}",
+				$"An error occured while reading input data using {typeof(TextReader)}. Details: {e.Message}",
 				innerException: e
 			);
 		}
 
 		if(TParsable.TryParse(input, provider: null, out var parsedInput) is false)
 		{
-			throw new ApplicationException($"Read data can't be parsed into {typeof(TParsable)}.");
+			throw new ApplicationException($"Input data can't be parsed into {typeof(TParsable)}.");
 		}
 
 		return parsedInput;
