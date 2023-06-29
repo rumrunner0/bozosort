@@ -44,4 +44,4 @@ The original creator of the bozosort algorithm isn't definitively known, as it's
 
 ## Note
 
-This project is made out of pure love for .NET C#. It serves as a just-for-fun, pet-project. All the code here is 100% original.
+This project is made out of pure love for .NET C#. It serves as a pet-project written just-for-fun. All the code here is 100% original.
