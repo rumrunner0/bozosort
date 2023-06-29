@@ -18,11 +18,16 @@ internal static class Input
 	internal static TParsable Line<TParsable>(TextReader reader) where TParsable : IParsable<TParsable>
 	{
 		ArgumentNullException.ThrowIfNull(reader);
+		TParsable? parsedInput;
 
-		var input = default(string);
 		try
 		{
-			while(string.IsNullOrWhiteSpace(input))
+			var input = default(string);
+			while
+			(
+				string.IsNullOrWhiteSpace(input) ||
+				TParsable.TryParse(input, provider: null, out parsedInput) is false
+			)
 			{
 				input = (reader.ReadLine() ?? string.Empty).Trim();
 			}
@@ -31,14 +36,9 @@ internal static class Input
 		{
 			throw new ApplicationException
 			(
-				$"An error occured while reading input data using {typeof(TextReader)}. Details: {e.Message}",
+				$"An error occured while reading and parsing input data. Details: {e.Message}",
 				innerException: e
 			);
-		}
-
-		if(TParsable.TryParse(input, provider: null, out var parsedInput) is false)
-		{
-			throw new ApplicationException($"Input data can't be parsed into {typeof(TParsable)}.");
 		}
 
 		return parsedInput;
