@@ -19,8 +19,8 @@ sorter.Started += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"{AlgorithmName} has started sorting the sequence: [{Sequence}]",
-		nameof(Bozosorter<int>), sortingArgs.Sequence.Joined()
+		"{AlgorithmName} has started sorting the sequence: {Sequence}",
+		nameof(Bozosorter<int>), sortingArgs.Sequence
 	);
 };
 
@@ -28,9 +28,13 @@ sorter.IterationCompleted += (_, sortingArgs) =>
 {
 	logger.Information
 	(
-		"Iteration {IterationNumber}. Changes: {FirstElement} <=> {SecondElement}. Sequence: [{Sequence}]",
-		sortingArgs.IterationNumber, sortingArgs.FirstElement,
-		sortingArgs.SecondElement, sortingArgs.Sequence.Joined()
+		"Iteration {IterationNumber}. " +
+		"Changes: {FirstElement} <=> {SecondElement}. " +
+		"Sequence: {Sequence}",
+
+		sortingArgs.IterationNumber,
+		sortingArgs.FirstElement, sortingArgs.SecondElement,
+		sortingArgs.Sequence
 	);
 };
 
@@ -44,8 +48,13 @@ sorter.Completed += (_, sortingArgs) =>
 	);
 };
 
-var sequence = Enumerable.Range(0, Input.Line<int>(Console.In)).ToArray();
+logger.Information("Asked user to enter the upper bound of the sequence");
+Console.Write($"Please, enter the upper bound of the sequence: ");
+
+var sequenceUpperBound = Input.Line<int>(reader: Console.In);
+var sequence = Enumerable.Range(0, sequenceUpperBound).ToArray();
 RandomNumberGenerator.Shuffle(sequence.AsSpan());
+
 sorter.Run(sequence);
 
 logger.Information("Application has been shut down");
