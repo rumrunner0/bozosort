@@ -92,6 +92,6 @@ public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable :
 		/// Creates default instance of the <see cref="Bozosorter{TSortable}"/>.
 		/// </summary>
 		/// <returns>Default instance of the <see cref="Bozosorter{TSortable}"/></returns>
-		public static ISorter<TSortable> New() => new Bozosorter<TSortable>();
+		public static ISorter<TSortable> Default() => new Bozosorter<TSortable>();
 	}
 }

@@ -14,7 +14,7 @@ Log.Logger = Essential.OfType<ILogger>();
 var logger = Log.Logger.ForContext<Program>();
 logger.Information("Application has been started");
 
-var sorter = Bozosorter<int>.Factory.New();
+var sorter = Bozosorter<int>.Factory.Default();
 sorter.Started += (_, sortingArgs) =>
 {
 	logger.Information
