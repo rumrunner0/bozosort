@@ -26,9 +26,9 @@ sorter.Started += (sender, args) => Console.WriteLine($"Sorting has been started
 sorter.Completed += (sender, args) => Console.WriteLine($"Sorting has been completed in {args.IterationNumber} iterations");
 sorter.IterationCompleted += (sender, args) => Console.WriteLine
 (
-    $"Iteration: {args.IterationNumber}. " +
-    $"Changes: {args.FirstElement} <=> {args.SecondElement}. " +
-    $"Sequence: {string.Join(separator: " ", args.Sequence)}."
+	$"Iteration: {args.IterationNumber}. " +
+	$"Changes: {args.FirstElement} <=> {args.SecondElement}. " +
+	$"Sequence: {string.Join(separator: " ", args.Sequence)}."
 );
 
 sorter.Run(sequence);
