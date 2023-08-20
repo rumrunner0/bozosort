@@ -36,11 +36,11 @@ sorter.Run(sequence);
 ### Rumble.Bozosort.Demo.Runnable Console Application
 After building the solution, run the `Rumble.Bozosort.Demo.Runnable` console application. It demonstrates a simple usage of the `Rumble.Bozosort` library.
 
-## Contributing
-If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
-
 ## History
 The original creator of the bozosort algorithm isn't definitively known, as it's more of a concept used to illustrate an inefficient sorting method rather than a formally recognized algorithm.
 
+## Contributing
+If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
+
 ## Note
-This project is made out of pure love for .NET C#. All the code here is 100% original.
+All the code here is 100% original.
