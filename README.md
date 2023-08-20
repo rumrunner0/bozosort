@@ -6,17 +6,14 @@ This repository contains the `Rumble.Bozosort` class library and `Rumble.Bozosor
 [![NuGet Package: Rumble.Bozosort](https://img.shields.io/nuget/vpre/Rumble.Bozosort?label=nuget%3A%20Rumble.Bozosort)](https://www.nuget.org/packages/Rumble.Bozosort)
 
 ## Description
-
 The `Rumble.Bozosort` is a .NET C# implementation of Bozosort — a highly inefficient sorting algorithm that operates by repeatedly selecting two elements of the list at random and swapping them if they are in the wrong order. This process continues until the entire list is sorted. Due to its random nature, Bozosort has an unbounded worst-case time complexity, and is typically used as a humorous example of how not to design an algorithm.
 
 The `Rumble.Bozosort.Demo.Runnable` is a console application demonstrating the usage of the `Rumble.Bozosort` library.
 
 ## Usage
-
 > **WARNING: The `Rumble.Bozosort` library is NOT intended for use in any real-world, production-level software. It is highly inefficient and is provided here for educational and entertainment purposes only.**
 
 ### Rumble.Bozosort Library
-
 ```csharp
 using System;
 using Rumble.Bozosort;
@@ -37,13 +34,13 @@ sorter.Run(sequence);
 ```
 
 ### Rumble.Bozosort.Demo.Runnable Console Application
-
 After building the solution, run the `Rumble.Bozosort.Demo.Runnable` console application. It demonstrates a simple usage of the `Rumble.Bozosort` library.
 
-## History
+## Contributing
+If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
 
+## History
 The original creator of the bozosort algorithm isn't definitively known, as it's more of a concept used to illustrate an inefficient sorting method rather than a formally recognized algorithm.
 
 ## Note
-
-This project is made out of pure love for .NET C#. It serves as a pet-project written just-for-fun. All the code here is 100% original.
+This project is made out of pure love for .NET C#. All the code here is 100% original.
