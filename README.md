@@ -43,4 +43,4 @@ The original creator of the bozosort algorithm isn't definitively known, as it's
 If you have any suggestions, ideas, or feedback to enhance the project, please feel free to create an issue. Your collaboration is welcomed to make this project a bit better.
 
 ## Note
-All the code here is 100% original.
+The code is 100% original.
