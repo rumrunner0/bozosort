@@ -3,7 +3,8 @@ Implementation of the bozosort sorting algorithm.
 
 This repository contains the `Rumble.Bozosort` class library and `Rumble.Bozosort.Demo.Runnable` console application. All the content in the repository is an original work created as a personal project, and serves as a .NET C# adaptation of the infamous bozosort algorithm.
 
-[![NuGet Package: Rumble.Bozosort](https://img.shields.io/nuget/vpre/Rumble.Bozosort?label=nuget%3A%20Rumble.Bozosort)](https://www.nuget.org/packages/Rumble.Bozosort)
+[![License](https://img.shields.io/github/license/rumrunner0/bozosort?label=license)](https://github.com/rumrunner0/bozosort/blob/main/LICENSE)
+[![Nuget](https://img.shields.io/nuget/vpre/Rumble.Bozosort?label=nuget)](https://www.nuget.org/packages/Rumble.Bozosort)
 
 ## Description
 The `Rumble.Bozosort` is a .NET C# implementation of Bozosort — a highly inefficient sorting algorithm that operates by repeatedly selecting two elements of the list at random and swapping them if they are in the wrong order. This process continues until the entire list is sorted. Due to its random nature, Bozosort has an unbounded worst-case time complexity, and is typically used as a humorous example of how not to design an algorithm.
