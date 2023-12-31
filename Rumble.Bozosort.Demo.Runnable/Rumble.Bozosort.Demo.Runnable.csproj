@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
-		<LangVersion>11</LangVersion>
+		<LangVersion>12</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Platform>AnyCPU</Platform>
@@ -29,10 +29,6 @@
 		<ProjectReference Include="..\Rumble.Bozosort\Rumble.Bozosort.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Rumble.Essentials" Version="0.0.20" />
-	</ItemGroup>
-
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	</PropertyGroup>
@@ -56,6 +52,10 @@
 			<DependentUpon>appsettings.json</DependentUpon>
 		</Content>
 
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Rumrunner0.UuMatter.Console" Version="0.1.3" />
 	</ItemGroup>
 
 </Project>

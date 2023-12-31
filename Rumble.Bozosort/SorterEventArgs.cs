@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace Rumble.Bozosort;
 
 /// <summary>
-/// Data of events raised by <see cref="ISorter{TSortable}"/>.
+/// Data of events raised by <see cref="ISorter{TSortable}" />.
 /// </summary>
-/// <typeparam name="TSortable">Type of the sequence elements</typeparam>
-public class SorterEventArgs<TSortable> : EventArgs
+/// <typeparam name="TItem">Type of the sequence items.</typeparam>
+public class SorterEventArgs<TItem> : EventArgs
 {
 	/// <summary>
-	/// Sequence to sort.
+	/// Collection to sort.
 	/// </summary>
-	public required IEnumerable<TSortable> Sequence { get; init; }
+	public required IList<TItem> Collection { get; init; }
 }

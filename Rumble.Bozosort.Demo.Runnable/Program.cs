@@ -4,52 +4,21 @@ using System.Security.Cryptography;
 using System.Text;
 using Rumble.Bozosort;
 using Rumble.Bozosort.Demo.Runnable;
-using Rumble.Essentials;
+using Rumrunner0.UuMatter.Console;
 using Serilog;
 
 Console.InputEncoding = Encoding.UTF8;
 Console.OutputEncoding = Encoding.UTF8;
 
-Log.Logger = Essential.OfType<ILogger>();
-var logger = Log.Logger.ForContext<Program>();
-logger.Information("Application has been started");
+Log.Logger = UuMatter.OfType<ILogger>();
+Log.Logger.Information("Application has been started");
 
-var sorter = Bozosorter<int>.Factory.Default();
-sorter.Started += (_, args) =>
-{
-	logger.Information
-	(
-		"{AlgorithmName} has started sorting the sequence: {Sequence}",
-		nameof(Bozosorter<int>), args.Sequence
-	);
-};
+var sorter = new Bozosorter<int>();
+sorter.Started += OnSortingStarted;
+sorter.Completed += OnSortingCompleted;
+sorter.IterationCompleted += OnSortingIterationCompleted;
 
-sorter.IterationCompleted += (_, args) =>
-{
-	logger.Information
-	(
-		"Iteration {IterationNumber}. " +
-		"Changes: {FirstElement} <=> {SecondElement}. " +
-		"Sequence: {Sequence}",
-
-		args.IterationNumber,
-		args.FirstElement, args.SecondElement,
-		args.Sequence
-	);
-};
-
-sorter.Completed += (_, args) =>
-{
-	logger.Information
-	(
-		"{AlgorithmName} has completed sorting the sequence. " +
-		"The sequence has been sorted in {TotalSeconds} seconds and {IterationNumber} iterations",
-		nameof(Bozosorter<int>), args.ElapsedTime.TotalSeconds, args.IterationNumber
-	);
-};
-
-logger.Information("Asked user to enter the upper bound of the sequence");
-Console.Write($"Please, enter the upper bound of the sequence: ");
+Console.Write("Enter the upper bound of the collection to sort: ");
 
 var sequenceUpperBound = Input.Line<int>(reader: Console.In);
 var sequence = Enumerable.Range(0, sequenceUpperBound).ToArray();
@@ -57,6 +26,35 @@ RandomNumberGenerator.Shuffle(sequence.AsSpan());
 
 sorter.Run(sequence);
 
-logger.Information("Application has been shut down");
-logger.Information("");
+Log.Logger.Information("Application has been shut down");
+Log.Logger.Information("");
 Log.CloseAndFlush();
+
+return;
+
+void OnSortingStarted(object? _, SorterEventArgs<int> args)
+{
+	Log.Logger.Information
+	(
+		"{SorterName} has started sorting the sequence {Collection}",
+		nameof(Bozosorter<int>), args.Collection
+	);
+}
+
+void OnSortingCompleted(object? _, SorterCompletedEventArgs<int> args)
+{
+	Log.Logger.Information
+	(
+		"{SorterName} has completed sorting in {TotalSeconds}s and {Iteration} iterations",
+		nameof(Bozosorter<int>), args.ElapsedTime.TotalSeconds, args.Iteration
+	);
+}
+
+void OnSortingIterationCompleted(object? _, BozosorterIterationEventArgs<int> args)
+{
+	Log.Logger.Information
+	(
+		"Iteration {Iteration}. Change {FirstItem} <=> {SecondItem}. Collection {Collection}",
+		args.Iteration, args.FirstItem, args.SecondItem, args.Collection
+	);
+}

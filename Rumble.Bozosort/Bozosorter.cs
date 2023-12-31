@@ -2,96 +2,70 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Rumble.Essentials;
 
 namespace Rumble.Bozosort;
 
 ///
 /// <inheritdoc />
 ///
-/// Uses "bozosort" as sorting algorithm.
-public sealed class Bozosorter<TSortable> : ISorter<TSortable> where TSortable : IComparable<TSortable>
+public sealed class Bozosorter<TItem> : ISorter<TItem> where TItem : IComparable<TItem>
 {
 	///
 	/// <inheritdoc />
 	///
-	public event EventHandler<SorterEventArgs<TSortable>>? Started;
+	public event EventHandler<SorterEventArgs<TItem>>? Started;
 
 	///
 	/// <inheritdoc />
 	///
-	public event EventHandler<SorterCompletedEventArgs<TSortable>>? Completed;
+	public event EventHandler<SorterCompletedEventArgs<TItem>>? Completed;
 
 	///
 	/// <inheritdoc />
 	///
-	public event EventHandler<BozosorterIterationEventArgs<TSortable>>? IterationCompleted;
+	public event EventHandler<BozosorterIterationEventArgs<TItem>>? IterationCompleted;
 
 	/// <summary>
 	/// Constructor of the instance.
 	/// </summary>
-	private Bozosorter()
-	{
-		// Empty
-	}
+	public Bozosorter() { /* Empty. */ }
 
 	///
 	/// <inheritdoc />
 	///
-	public void Run(in IEnumerable<TSortable> sequence)
+	public void Run(in IList<TItem> collection)
 	{
-		var iterationNumber = 0;
-		var array = sequence.ToArray();
+		var iteration = 0;
 		var stopwatch = new Stopwatch();
 
 		Started?.Invoke(sender: this, new ()
 		{
-			Sequence = array
+			Collection = collection
 		});
 
-		while(true)
+		while(collection.IsOrdered() is false)
 		{
+			iteration++;
 			stopwatch.Start();
 
-			if(array.IsOrdered())
-			{
-				stopwatch.Stop();
-				break;
-			}
-
-			iterationNumber++;
-
-			var (aIndex, bIndex, _) = array.RandomUniqueIndexes(count: 2).Order().ToArray();
-			(array[aIndex], array[bIndex]) = (array[bIndex], array[aIndex]);
+			var indexes = collection.RandomUniqueIndexes(count: 2).ToArray();
+			(collection[indexes[0]], collection[indexes[1]]) = (collection[indexes[1]], collection[indexes[0]]);
 
 			stopwatch.Stop();
-
 			IterationCompleted?.Invoke(sender: this, new ()
 			{
-				IterationNumber = iterationNumber,
-				Sequence = array,
-				FirstElement  = array[bIndex],
-				SecondElement = array[aIndex]
+				Collection = collection,
+				Iteration = iteration,
+				FirstItem  = collection[indexes[1]],
+				SecondItem = collection[indexes[0]]
 			});
 		}
 
 		Completed?.Invoke(sender: this, new ()
 		{
-			Sequence = array,
-			IterationNumber = iterationNumber,
+			Collection = collection,
+			Iteration = iteration,
 			ElapsedTime = stopwatch.Elapsed
 		});
-	}
-
-	/// <summary>
-	/// Factory for the <see cref="Bozosorter{TSortable}"/>.
-	/// </summary>
-	public static class Factory
-	{
-		/// <summary>
-		/// Creates default instance of the <see cref="Bozosorter{TSortable}"/>.
-		/// </summary>
-		/// <returns>Default instance of the <see cref="Bozosorter{TSortable}"/></returns>
-		public static ISorter<TSortable> Default() => new Bozosorter<TSortable>();
 	}
 }

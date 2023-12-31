@@ -3,18 +3,18 @@
 namespace Rumble.Bozosort;
 
 /// <summary>
-/// Data of the <see cref="ISorter{TSortable}"/>.<see cref="ISorter{TSortable}.Completed"/> event.
+/// Data of the <see cref="ISorter{TSortable}" />.<see cref="ISorter{TSortable}.Completed" /> event.
 /// </summary>
-/// <typeparam name="TSortable">Type of the sequence elements</typeparam>
-public sealed class SorterCompletedEventArgs<TSortable> : SorterEventArgs<TSortable>
+/// <typeparam name="TItem">Type of the sequence items.</typeparam>
+public sealed class SorterCompletedEventArgs<TItem> : SorterEventArgs<TItem>
 {
 	/// <summary>
 	/// Number of the sorting iteration.
 	/// </summary>
-	public required int IterationNumber { get; init; }
+	public required int Iteration { get; init; }
 
 	/// <summary>
-	/// Time elapsed since the sorting start.
+	/// Time elapsed since the sorting has started.
 	/// </summary>
 	public required TimeSpan ElapsedTime { get; init; }
 }
