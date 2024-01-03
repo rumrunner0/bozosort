@@ -65,7 +65,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Rumrunner0.UuMatter.Console" Version="0.1.3" />
+	  <PackageReference Include="Rumrunner0.UuMatter.Console" Version="0.1.6" />
 	</ItemGroup>
 
 </Project>

@@ -12,7 +12,8 @@ Console.InputEncoding = Encoding.UTF8;
 Console.OutputEncoding = Encoding.UTF8;
 
 Log.Logger = UuMatter.OfType<ILogger>();
-Log.Logger.Information("Application has been started");
+var logger = Log.Logger.ForContext<Program>();
+logger.Information("Application has been started");
 
 Console.Write("Enter the upper bound of the collection to sort >");
 var collectionUpperBound = Input.Line<int>(reader: Console.In);
@@ -28,8 +29,8 @@ sorter.IterationCompleted += OnSortingIterationCompleted;
 
 sorter.Run(collection);
 
-Log.Logger.Information("Application has been shut down");
-Log.Logger.Information("");
+logger.Information("Application has been shut down");
+logger.Information("");
 Log.CloseAndFlush();
 
 return;
