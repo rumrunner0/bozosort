@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-namespace Rumble.Bozosort;
+namespace Rumrunner0.Bozosort;
 
 /// <summary>
 /// Extensions for the type <see cref="IList{T}"/>.
@@ -54,9 +54,9 @@ internal static class ListExtensions
 			throw new ArgumentNullException(nameof(source));
 		}
 
-		for(var i = 0; i < source.Count - 1; i++)
+		for (var i = 0; i < source.Count - 1; i++)
 		{
-			if(source[i].CompareTo(source[i + 1]) > 0)
+			if (source[i].CompareTo(source[i + 1]) > 0)
 			{
 				return false;
 			}

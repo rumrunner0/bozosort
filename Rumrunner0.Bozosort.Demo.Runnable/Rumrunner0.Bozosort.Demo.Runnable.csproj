@@ -1,14 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net8</TargetFramework>
 		<LangVersion>12</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Platform>AnyCPU</Platform>
 		<Configurations>Debug;Release</Configurations>
 		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<PropertyGroup>
 		<IsPackable>false</IsPackable>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Company>Roman Malyi</Company>
+		<Product>Bozosort.Demo</Product>
+		<AssemblyVersion>0.1.0</AssemblyVersion>
+		<FileVersion>0.1.0.0</FileVersion>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>../../documents/rumrunner0_bozosort.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -26,7 +40,20 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Rumble.Bozosort\Rumble.Bozosort.csproj" />
+		<None Remove="appsettings.json" />
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<None Remove="appsettings.Development.json" />
+		<Content Include="appsettings.Development.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
+		<None Remove="appsettings.Production.json" />
+		<Content Include="appsettings.Production.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<DependentUpon>appsettings.json</DependentUpon>
+		</Content>
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -34,24 +61,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-
-		<None Remove="appsettings.json" />
-		<Content Include="appsettings.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-
-		<None Remove="appsettings.Development.json" />
-		<Content Include="appsettings.Development.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<DependentUpon>appsettings.json</DependentUpon>
-		</Content>
-
-		<None Remove="appsettings.Production.json" />
-		<Content Include="appsettings.Production.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-			<DependentUpon>appsettings.json</DependentUpon>
-		</Content>
-
+		<ProjectReference Include="..\Rumrunner0.Bozosort\Rumrunner0.Bozosort.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

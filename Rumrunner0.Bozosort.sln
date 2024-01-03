@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumble.Bozosort", "Rumble.Bozosort\Rumble.Bozosort.csproj", "{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumrunner0.Bozosort", "Rumrunner0.Bozosort\Rumrunner0.Bozosort.csproj", "{308D91AF-0C2C-4FF5-8A8F-919881DBA27E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumble.Bozosort.Demo.Runnable", "Rumble.Bozosort.Demo.Runnable\Rumble.Bozosort.Demo.Runnable.csproj", "{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumrunner0.Bozosort.Demo.Runnable", "Rumrunner0.Bozosort.Demo.Runnable\Rumrunner0.Bozosort.Demo.Runnable.csproj", "{0A78FDC1-4B2E-4DC7-8B04-8F7E8A0684A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF293D9A-607F-46B2-8984-5EB3DD0A73F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

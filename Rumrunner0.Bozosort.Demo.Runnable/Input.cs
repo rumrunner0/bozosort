@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Rumble.Bozosort.Demo.Runnable;
+namespace Rumrunner0.Bozosort.Demo.Runnable;
 
 /// <summary>
 /// Dummy input handling utility.

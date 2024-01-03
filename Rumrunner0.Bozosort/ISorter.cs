@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rumble.Bozosort;
+namespace Rumrunner0.Bozosort;
 
 /// <summary>
 /// Sorter for a collection of items of type "<typeparamref name="TItem"/>".
@@ -17,7 +17,7 @@ public interface ISorter<TItem> where TItem : IComparable<TItem>
 	/// <summary>
 	/// Event that is raised after the sorting is completed.
 	/// </summary>
-	event EventHandler<SorterCompletedEventArgs<TItem>>? Completed;
+	event EventHandler<SorterEventArgs<TItem>>? Completed;
 
 	/// <summary>
 	/// Event that is raised after each iteration of the sorting is completed. <br />
