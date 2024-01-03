@@ -39,15 +39,24 @@ public sealed class Bozosorter<TItem> : ISorter<TItem> where TItem : IComparable
 		while(collection.IsOrdered() is false)
 		{
 			iteration++;
-			var indexes = collection.RandomUniqueIndexes(count: 2).ToArray();
-			(collection[indexes[0]], collection[indexes[1]]) = (collection[indexes[1]], collection[indexes[0]]);
+
+			var indexes = collection.RandomUniqueIndexes(count: 2).Order().ToArray();
+			var (i1, i2) = (indexes[0], indexes[1]);
+			var itemsChanged = false;
+
+			if (collection[i1].CompareTo(collection[i2]) >= 0)
+			{
+				(collection[i1], collection[i2]) = (collection[i2], collection[i1]);
+				itemsChanged = true;
+			}
 
 			IterationCompleted?.Invoke(sender: this, new ()
 			{
 				Collection = collection,
 				Iteration = iteration,
-				FirstItem  = collection[indexes[1]],
-				SecondItem = collection[indexes[0]]
+				FirstItem = collection[i2],
+				SecondItem = collection[i1],
+				ItemsChanged = itemsChanged
 			});
 		}
 

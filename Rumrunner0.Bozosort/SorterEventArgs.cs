@@ -6,7 +6,7 @@ namespace Rumrunner0.Bozosort;
 /// <summary>
 /// Data of events raised by <see cref="ISorter{TSortable}" />.
 /// </summary>
-/// <typeparam name="TItem">Type of the sequence items.</typeparam>
+/// <typeparam name="TItem">Type of the collection items.</typeparam>
 public class SorterEventArgs<TItem> : EventArgs
 {
 	/// <summary>

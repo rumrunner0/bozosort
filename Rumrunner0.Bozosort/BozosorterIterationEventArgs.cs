@@ -3,16 +3,21 @@
 /// <summary>
 /// Data of the <see cref="Bozosorter{TSortable}" />.<see cref="Bozosorter{TSortable}.IterationCompleted" /> event.
 /// </summary>
-/// <typeparam name="TItem">Type of the sequence items.</typeparam>
+/// <typeparam name="TItem">Type of the collection items.</typeparam>
 public sealed class BozosorterIterationEventArgs<TItem> : SorterEventArgs<TItem>
 {
 	/// <summary>
-	/// First randomly picked item of the sequence.
+	/// Flag that indicates whether the items are changed.
 	/// </summary>
-	public required TItem FirstItem { get; init; }
+	public required bool ItemsChanged { get; init; }
 
 	/// <summary>
-	/// Second randomly picked item of the sequence.
+	/// First randomly picked item of the collection.
 	/// </summary>
-	public required TItem SecondItem { get; init; }
+	public TItem? FirstItem { get; init; }
+
+	/// <summary>
+	/// Second randomly picked item of the collection.
+	/// </summary>
+	public TItem? SecondItem { get; init; }
 }
